@@ -22,8 +22,9 @@ typedef struct SignalNode{
 static int currentNum = 0;
 
 Node *header; // 头结点
+Node nodesArr[MAX_VALUE];
 
-Node* returnHeaderNode();
+Node* returnHeaderNode(); // 获取头结点
 
 Node* returnHeaderNode(){
     if (!header) {
