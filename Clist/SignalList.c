@@ -25,6 +25,7 @@ Node *header; // 头结点
 Node nodesArr[MAX_VALUE];
 
 Node* returnHeaderNode(); // 获取头结点
+Node *createNode(DATA data); // 创建节点 data 数据域
 
 Node* returnHeaderNode(){
     if (!header) {
@@ -37,3 +38,16 @@ Node* returnHeaderNode(){
     }
     return header;
 }
+
+Node *createNode(DATA data){
+    Node *node = (ListNode)malloc(sizeof(Node));
+    if (!node) {
+        printf("Create node-node fail! (in SignalList)");
+        exit(0);
+    }
+    
+    node->data = data;
+    node->next = NULL;
+    return node;
+}
+
