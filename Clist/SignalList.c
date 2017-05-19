@@ -22,11 +22,11 @@ typedef struct SignalNode{
 static int currentNum = 0;
 
 Node *header; // 头结点
-Node nodesArr[MAX_VALUE];
+Node nodesArr[MAX_VALUE]; // 存储节点的数组
 
 Node* returnHeaderNode(); // 获取头结点
 Node* createNode(DATA data, Node *formerNode); // 创建节点 data 数据域
-
+Node *returnIndexNode(int index); // 返回指定链表中的节点 从1开始计数
 void initSignalList(int length); // 初始化一个固定长度的带有头结点的单链表
 
 void printNode();// 打印函数
@@ -62,7 +62,8 @@ void initSignalList(int length){
         exit(1);
     }
     
-    returnHeaderNode();
+    currentNum = length; // 存储现有的长度
+    returnHeaderNode(); // 初始化头结点
     for (int i = 0; i < length; i ++) {
         if (!i) {
             // 第一个元素
@@ -73,6 +74,24 @@ void initSignalList(int length){
             nodesArr[i-1] = *former; // resave
         }
     }
+}
+
+Node *returnIndexNode(int index){
+    if(index<0 || index>=currentNum-1){
+        printf("get fail! check index");
+        exit(0);
+    }
+    
+    return &nodesArr[index-1];
+}
+
+void insertNode(int index, DATA data){
+    if (index < 1 || index > currentNum) {
+        printf("insert fail! check index");
+        exit(0);
+    }
+    
+    int crIn = index -1;
 }
 
 void printNode(){
