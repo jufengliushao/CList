@@ -52,7 +52,9 @@ Node* createNode(DATA data, Node *formerNode){
     
     node->data = data;
     node->next = NULL;
-    formerNode->next = node;
+    if (formerNode) {
+       formerNode->next = node;
+    }
     return node;
 }
 
@@ -92,6 +94,18 @@ void insertNode(int index, DATA data){
     }
     
     int crIn = index -1;
+    Node *element = createNode(data, NULL);
+    if(!crIn){
+        // 第一个节点
+        element->next = header->next;
+        header->next = element;
+    }else{
+        // 其余节点
+        Node *former = returnIndexNode(index);
+        element->next = former->next;
+        former->next = element;
+    }
+    currentNum ++;
 }
 
 void printNode(){
