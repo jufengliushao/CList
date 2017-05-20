@@ -84,11 +84,18 @@ Node *returnIndexNode(int index){
         exit(0);
     }
     
-    return &nodesArr[index-1];
+    int i = 0;
+    Node *node = header;
+    // 索引查询
+    while (i <= index) {
+        node = node->next;
+        i ++;
+    }
+    return node;
 }
 
 void insertNode(int index, DATA data){
-    if (index < 1 || index > currentNum) {
+    if (index < 1 || index > currentNum + 1) {
         printf("insert fail! check index");
         exit(0);
     }
@@ -108,15 +115,29 @@ void insertNode(int index, DATA data){
     currentNum ++;
 }
 
+void deleteNode(int index){
+    if(index < 1 || index > currentNum){
+        printf("delete fail! check index");
+        exit(0);
+    }
+    
+    Node *node = returnIndexNode(index - 1);
+    if (index == 1) {
+        // 删除头结点
+        header->next = node->next;
+    }else{
+        Node *former = returnIndexNode(index - 2);
+        former->next = node->next;
+    }
+    node->next = NULL;
+    node->data = 0;
+    currentNum --;
+}
+
 void printNode(){
     Node *node = header;
     while (!node->next) {
-        printf("###data:%d-------next:%p\n", node->data, node->next);
         node = node->next;
+        printf("###data:%d-------next:%p\n", node->data, node->next);
     }
-    printf("###data:%d-------next:%p\n", node->data, node->next);
-//    for (int i = 0; i < currentNum - 1; i ++) {
-//        printf("###data:%d-------next:%p-------next-data:%d\n", nodesArr[i].data, nodesArr[i].next, (nodesArr[i].next)->data);
-//    }
-//    printf("###data:%d-------next:%p-------next-data:0\n", nodesArr[currentNum-1].data, nodesArr[currentNum-1].next);
 }
