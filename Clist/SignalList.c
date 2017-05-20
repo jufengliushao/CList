@@ -109,8 +109,14 @@ void insertNode(int index, DATA data){
 }
 
 void printNode(){
-    for (int i = 0; i < currentNum - 1; i ++) {
-        printf("###data:%d-------next:%p-------next-data:%d\n", nodesArr[i].data, nodesArr[i].next, (nodesArr[i].next)->data);
+    Node *node = header;
+    while (!node->next) {
+        printf("###data:%d-------next:%p\n", node->data, node->next);
+        node = node->next;
     }
-    printf("###data:%d-------next:%p-------next-data:0\n", nodesArr[currentNum-1].data, nodesArr[currentNum-1].next);
+    printf("###data:%d-------next:%p\n", node->data, node->next);
+//    for (int i = 0; i < currentNum - 1; i ++) {
+//        printf("###data:%d-------next:%p-------next-data:%d\n", nodesArr[i].data, nodesArr[i].next, (nodesArr[i].next)->data);
+//    }
+//    printf("###data:%d-------next:%p-------next-data:0\n", nodesArr[currentNum-1].data, nodesArr[currentNum-1].next);
 }
