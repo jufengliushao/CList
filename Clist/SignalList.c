@@ -7,8 +7,6 @@
 //
 
 #include "SignalList.h"
-#include <malloc/malloc.h>
-#include <stdlib.h>
 
 Node* returnHeaderNode(){
     if (!header) {

@@ -10,6 +10,9 @@
 #define SignalList_h
 
 #include <stdio.h>
+#include <malloc/malloc.h>
+#include <stdlib.h>
+
 #define MAX_VALUE 100 // 最大值
 
 typedef int DATA;
@@ -22,7 +25,7 @@ typedef struct SignalNode{
 static int currentNum = 0;
 
 Node *header; // 头结点
-Node nodesArr[MAX_VALUE]; // 存储节点的数组
+Node nodesArr[100]; // 存储节点的数组
 Node* returnHeaderNode(); // 获取头结点
 Node* createNode(DATA data, Node *formerNode); // 创建节点 data 数据域
 Node *returnIndexNode(int index); // 返回指定链表中的节点 从1开始计数

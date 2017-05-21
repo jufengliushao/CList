@@ -7,13 +7,10 @@
 //
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <malloc/malloc.h>
-#include "SignalList.h"
 
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    
+    returnHeaderNode();
     return 0;
 }
