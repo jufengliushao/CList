@@ -11,6 +11,13 @@
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    returnHeaderNode();
+    Node *header = returnHeaderNode();
+    insertNode(0, 201, header);
+    insertNode(1, 202, header);
+    printNode(header);
+    insertNode(0, 203, header);
+    printNode(header);
+    deleteNode(1, header);
+    printNode(header);
     return 0;
 }

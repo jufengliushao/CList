@@ -62,7 +62,7 @@ Node *returnIndexNode(int index, Node *header){
 }
 
 void insertNode(int index, DATA data, Node *header){
-    if (index < 1 || index > currentNum + 1) {
+    if (index < 0 || index > currentNum + 1) {
         printf("insert fail! check index");
         exit(0);
     }
@@ -92,9 +92,9 @@ void bubbleSortList(){
     
 }
 
-void printNode(){
+void printNode(Node *header){
     Node *node = header;
-    while (!node->next) {
+    while (node->next) {
         node = node->next;
         printf("###data:%d-------next:%p\n", node->data, node->next);
     }
