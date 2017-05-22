@@ -9,14 +9,12 @@
 #include "SignalList.h"
 
 Node* returnHeaderNode(){
+    Node *header = (ListNode)malloc(sizeof(Node));
     if (!header) {
-        header = (ListNode)malloc(sizeof(Node));
-        if (!header) {
-            printf("Create header-node fail! (in SignalList)");
-        }
-        header->data = 0;
-        header->next = NULL;
+        printf("Create header-node fail! (in SignalList)");
     }
+    header->data = 0;
+    header->next = NULL;
     return header;
 }
 
@@ -35,7 +33,7 @@ Node* createNode(DATA data, Node *formerNode){
     return node;
 }
 
-void initSignalList(int length){
+void initSignalList(int length, Node *header){
     if (!length || length > MAX_VALUE) {
         printf("init fail! check lenght");
         exit(1);
@@ -43,20 +41,12 @@ void initSignalList(int length){
     
     currentNum = length; // 存储现有的长度
     returnHeaderNode(); // 初始化头结点
-    for (int i = 0; i < length; i ++) {
-        if (!i) {
-            // 第一个元素
-            nodesArr[i] = *createNode(i + 10, header);
-        }else{
-            Node *former = &nodesArr[i-1];
-            nodesArr[i] = *createNode(i + 10, former);
-            nodesArr[i-1] = *former; // resave
-        }
-    }
+    
 }
 
-Node *returnIndexNode(int index){
-    if(index<0 || index>=currentNum-1){
+Node *returnIndexNode(int index, Node *header){
+    // 从0开始
+    if(index>=currentNum){
         printf("get fail! check index");
         exit(0);
     }
@@ -71,28 +61,19 @@ Node *returnIndexNode(int index){
     return node;
 }
 
-void insertNode(int index, DATA data){
+void insertNode(int index, DATA data, Node *header){
     if (index < 1 || index > currentNum + 1) {
         printf("insert fail! check index");
         exit(0);
     }
     
-    int crIn = index -1;
     Node *element = createNode(data, NULL);
-    if(!crIn){
-        // 第一个节点
-        element->next = header->next;
-        header->next = element;
-    }else{
-        // 其余节点
-        Node *former = returnIndexNode(index);
-        element->next = former->next;
-        former->next = element;
-    }
-    currentNum ++;
+    Node *former = returnIndexNode(index - 1, header);
+    element->next = former->next;
+    former->next = element;
 }
 
-void deleteNode(int index){
+void deleteNode(int index, Node *header){
     if(index < 1 || index > currentNum){
         printf("delete fail! check index");
         exit(0);
