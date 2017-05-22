@@ -71,25 +71,21 @@ void insertNode(int index, DATA data, Node *header){
     Node *former = returnIndexNode(index - 1, header);
     element->next = former->next;
     former->next = element;
+    currentNum ++;
 }
 
 void deleteNode(int index, Node *header){
-    if(index < 1 || index > currentNum){
+    if(index < 0 || index > currentNum){
         printf("delete fail! check index");
         exit(0);
     }
     
-    Node *node = returnIndexNode(index - 1);
-    if (index == 1) {
-        // 删除头结点
-        header->next = node->next;
-    }else{
-        Node *former = returnIndexNode(index - 2);
-        former->next = node->next;
-    }
-    node->next = NULL;
-    node->data = 0;
-    currentNum --;
+    Node *former = returnIndexNode(index-1, header);
+    Node *element = former->next;
+    former->next = element->next;
+    element->next = NULL;
+    element->data = 0;
+    free(element); // 释放内存
 }
 
 void bubbleSortList(){
