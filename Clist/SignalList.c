@@ -88,14 +88,55 @@ void deleteNode(int index, Node *header){
     free(element); // 释放内存
 }
 
-void bubbleSortList(){
-    
+void bubbleSortList(Node *header){
+    Node *m = header;
+    Node *p = m->next;
+    Node *q = p->next;
+    int exchange = 1;
+    while (m&&exchange) {
+        exchange = 0;
+        while (q) {
+            if (p->data > q->data) {
+                // 交换
+                exchange = 1;
+                p->next = q->next;
+                m->next = q;
+                q->next = p;
+                m = q;
+                q = p->next;
+            }else{
+                m = p;
+                p = q;
+                q = q->next;
+            }
+        }
+        m = header;
+        p = m->next;
+        q = p->next;
+    }
+}
+
+void selectSort(Node *header){
+    Node *min = header->next;
+    Node *element = min;
+    Node *former = header;
+    Node *temp;
+    while (min->next) {
+        while (element) {
+            if (min->data > element->data) {
+                min = element;
+                temp = element;
+            }
+            element = element->next;
+        }
+        
+    }
 }
 
 void printNode(Node *header){
     Node *node = header;
     while (node->next) {
         node = node->next;
-        printf("###data:%d-------next:%p\n", node->data, node->next);
+        printf("###data:%d----self:%p---next:%p\n", node->data, node, node->next);
     }
 }

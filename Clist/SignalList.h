@@ -32,7 +32,8 @@ void initSignalList(int length, Node *header); // 初始化一个固定长度的
 void insertNode(int index, DATA data, Node *header);  // 插入节点 从0开始计数
 void deleteNode(int index, Node *header); // 删除指定节点 从0开始计数
 
-void bubbleSortList(); // 冒泡排序
+void bubbleSortList(Node *header); // 冒泡排序
+void selectSort(Node *header); // 选择排序
 
 void printNode(Node *header);// 打印函数
 

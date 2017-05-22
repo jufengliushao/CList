@@ -14,10 +14,13 @@ int main(int argc, const char * argv[]) {
     Node *header = returnHeaderNode();
     insertNode(0, 201, header);
     insertNode(1, 202, header);
-    printNode(header);
     insertNode(0, 203, header);
+    insertNode(1, 204, header);
+    insertNode(2, 200, header);
+    insertNode(2, 201, header);
     printNode(header);
-    deleteNode(1, header);
+    printf("\n\n");
+    bubbleSortList(header);
     printNode(header);
     return 0;
 }
