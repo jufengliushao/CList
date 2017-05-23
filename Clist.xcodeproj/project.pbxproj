@@ -66,8 +66,8 @@
 				E6472FFA1ECD221C00C5D073 /* main.c */,
 				E64730021ECD9E9A00C5D073 /* SignalList.h */,
 				E64730011ECD9E9A00C5D073 /* SignalList.c */,
-				E6A746461ED3C31800420AD9 /* DoubleList.c */,
 				E6A746471ED3C31800420AD9 /* DoubleList.h */,
+				E6A746461ED3C31800420AD9 /* DoubleList.c */,
 			);
 			path = Clist;
 			sourceTree = "<group>";
