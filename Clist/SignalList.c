@@ -8,7 +8,7 @@
 
 #include "SignalList.h"
 
-Node* returnHeaderNode(){
+Node* sl_returnHeaderNode(){
     Node *header = (ListNode)malloc(sizeof(Node));
     if (!header) {
         printf("Create header-node fail! (in SignalList)");
@@ -18,7 +18,7 @@ Node* returnHeaderNode(){
     return header;
 }
 
-Node* createNode(DATA data, Node *formerNode){
+Node* sl_createNode(DATA data, Node *formerNode){
     Node *node = (ListNode)malloc(sizeof(Node));
     if (!node) {
         printf("Create node-node fail! (in SignalList)");
@@ -33,18 +33,18 @@ Node* createNode(DATA data, Node *formerNode){
     return node;
 }
 
-void initSignalList(int length, Node *header){
+void sl_initSignalList(int length, Node *header){
     if (!length || length > MAX_VALUE) {
         printf("init fail! check lenght");
         exit(1);
     }
     
     currentNum = length; // 存储现有的长度
-    returnHeaderNode(); // 初始化头结点
+    sl_returnHeaderNode(); // 初始化头结点
     
 }
 
-Node *returnIndexNode(int index, Node *header){
+Node *sl_returnIndexNode(int index, Node *header){
     // 从0开始
     if(index>=currentNum){
         printf("get fail! check index");
@@ -61,26 +61,26 @@ Node *returnIndexNode(int index, Node *header){
     return node;
 }
 
-void insertNode(int index, DATA data, Node *header){
+void sl_insertNode(int index, DATA data, Node *header){
     if (index < 0 || index > currentNum + 1) {
         printf("insert fail! check index");
         exit(0);
     }
     
-    Node *element = createNode(data, NULL);
-    Node *former = returnIndexNode(index - 1, header);
+    Node *element = sl_createNode(data, NULL);
+    Node *former = sl_returnIndexNode(index - 1, header);
     element->next = former->next;
     former->next = element;
     currentNum ++;
 }
 
-void deleteNode(int index, Node *header){
+void sl_deleteNode(int index, Node *header){
     if(index < 0 || index > currentNum){
         printf("delete fail! check index");
         exit(0);
     }
     
-    Node *former = returnIndexNode(index-1, header);
+    Node *former = sl_returnIndexNode(index-1, header);
     Node *element = former->next;
     former->next = element->next;
     element->next = NULL;
@@ -88,7 +88,7 @@ void deleteNode(int index, Node *header){
     free(element); // 释放内存
 }
 
-void bubbleSortList(Node *header){
+void sl_bubbleSortList(Node *header){
     Node *m = header;
     Node *p = m->next;
     Node *q = p->next;
@@ -116,10 +116,9 @@ void bubbleSortList(Node *header){
     }
 }
 
-void selectSort(Node *header){
+void sl_selectSort(Node *header){
     Node *min = header->next;
     Node *element = min;
-    Node *former = header;
     Node *temp;
     while (min->next) {
         while (element) {
@@ -133,7 +132,15 @@ void selectSort(Node *header){
     }
 }
 
-void printNode(Node *header){
+void sl_setCycleSignalList(Node *header){
+    Node *node = header;
+    if (node->next) {
+        node = node->next;
+    }
+    node->next = header;
+}
+
+void sl_printNode(Node *header){
     Node *node = header;
     while (node->next) {
         node = node->next;
