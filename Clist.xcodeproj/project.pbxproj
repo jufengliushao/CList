@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E6472FFB1ECD221C00C5D073 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = E6472FFA1ECD221C00C5D073 /* main.c */; };
+		E6A746481ED3C31800420AD9 /* DoubleList.c in Sources */ = {isa = PBXBuildFile; fileRef = E6A746461ED3C31800420AD9 /* DoubleList.c */; };
 		E6D25FB91ED096FA00766F1A /* SignalList.c in Sources */ = {isa = PBXBuildFile; fileRef = E64730011ECD9E9A00C5D073 /* SignalList.c */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,8 @@
 		E6472FFA1ECD221C00C5D073 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		E64730011ECD9E9A00C5D073 /* SignalList.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SignalList.c; sourceTree = "<group>"; };
 		E64730021ECD9E9A00C5D073 /* SignalList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignalList.h; sourceTree = "<group>"; };
+		E6A746461ED3C31800420AD9 /* DoubleList.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = DoubleList.c; sourceTree = "<group>"; };
+		E6A746471ED3C31800420AD9 /* DoubleList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleList.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,8 @@
 				E6472FFA1ECD221C00C5D073 /* main.c */,
 				E64730021ECD9E9A00C5D073 /* SignalList.h */,
 				E64730011ECD9E9A00C5D073 /* SignalList.c */,
+				E6A746461ED3C31800420AD9 /* DoubleList.c */,
+				E6A746471ED3C31800420AD9 /* DoubleList.h */,
 			);
 			path = Clist;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6D25FB91ED096FA00766F1A /* SignalList.c in Sources */,
+				E6A746481ED3C31800420AD9 /* DoubleList.c in Sources */,
 				E6472FFB1ECD221C00C5D073 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
