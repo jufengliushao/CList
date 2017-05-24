@@ -81,4 +81,6 @@ void dl_deleteNode(int index, DoubleList *L);
  @param L 头指针
  */
 void dl_printfDoubleList(DoubleList *L);
+
+void dl_printNode(DuNode *element);
 #endif /* DoubleList_h */

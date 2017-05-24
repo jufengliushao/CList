@@ -39,23 +39,33 @@ DuNode *dl_createNode(Data data){
 }
 
 DuNode *dl_getElement(int index, DoubleList *L){
-    if (index >= L->len || index < 0) {
+    if (index > L->len || index < 0) {
         printf("check index!\n");
         exit(0);
     }
     
     DuNode *node = L->head;
     int i = 0;
-    if((L->len-1) / 2 > index){
+    if(L->len / 2 > index){
         // 从前往后搜索
-        while (node && i < index) {
+        while (node && i <= index) {
+            if (i == 0) {
+                ++i;
+                continue;
+            }
             node = node->next;
             ++i;
         }
     }else{
-        i = L->len - 1;
+        i = L->len;
+        node = L->tail;
         while (node && index < i) {
+            if (i == L->len) {
+                --i;
+                continue;
+            }
             node = node->former;
+            --i;
         }
     }
     return node;
@@ -70,10 +80,13 @@ void dl_insertNode(Data data, int index, DoubleList *L){
     DuNode *node = dl_createNode(data);
     if (index == 0) {
         node->next = L->head;
+        if (L->head) {
+            L->head->former = node; // 若不为空表
+        }
         L->head = node;
         L->len += 1;
         return;
-    }else if(index == L->len){
+    }else if(index == L->len-1){
         // 在队尾插入
         L->tail = node; // 修改尾指针
     }
@@ -94,15 +107,21 @@ void dl_deleteNode(int index, DoubleList *L){
     DuNode *element = dl_getElement(index, L);
     if (index == 0) {
        // 删除头结点
+        element = L->head;
         L->head = element->next;
+        if (element->next) {
+           element->next->former = NULL;
+        }
         element->former = element->next = NULL;
         dl_freeNode(element);
+        -- L->len;
         return;
     }else if(index == L->len-1){
         // 在队尾删除
         L->tail = element->former;
         element->former = element->next = NULL;
         dl_freeNode(element);
+        -- L->len;
         return;
     }
 
@@ -116,10 +135,15 @@ void dl_printfDoubleList(DoubleList *L){
     DuNode *element = L->head;
     int i = 0;
     while (i < L->len) {
-        printf("i:%d----currentP:%p-------formerP:%p------data:%d-------next:%p\n", i, element, element->former, element->data, element->next);
+        printf("i:%d---", i);
         element = element->next;
+        dl_printNode(element);
         i ++;
     }
+}
+
+void dl_printNode(DuNode *element){
+    printf("currentP:%p-------formerP:%p------data:%d-------next:%p\n", element, element->former, element->data, element->next);
 }
 
 void dl_updateHeader(DoubleList *L){

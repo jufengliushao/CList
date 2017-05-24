@@ -15,6 +15,8 @@ int main(int argc, const char * argv[]) {
     DoubleList *doubleL = dl_returnHeaderNode();
     dl_insertNode(201, 0, doubleL);
     dl_insertNode(200, 1, doubleL);
+    dl_insertNode(202, 2, doubleL);
     dl_printfDoubleList(doubleL);
+    
     return 0;
 }
