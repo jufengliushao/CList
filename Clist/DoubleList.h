@@ -53,19 +53,25 @@ DuNode *dl_getElement(int index, DoubleList *L);
 /**
  创建结点
 
- @param data <#data description#>
- @return <#return value description#>
+ @param data 数据域数值
+ @return DuNode
  */
 DuNode *dl_createNode(Data data);
 
 /**
- <#Description#>
+ 插入结点
 
- @param data <#data description#>
- @param index <#index description#>
- @param L <#L description#>
+ @param data 数据域数值
+ @param index 在第index结点之前插入
+ @param L 头指针
  */
 void dl_insertNode(Data data, int index, DoubleList *L);
 
+/**
+ 删除结点
+
+ @param index 删除index结点
+ @param L 头指针
+ */
 void dl_deleteNode(int index, DoubleList *L);
 #endif /* DoubleList_h */

@@ -21,6 +21,8 @@ DoubleList* dl_returnHeaderNode(){
 }
 
 void dl_freeNode(DuNode *p){
+    p->former = p->next = NULL;
+    p->data = 0;
     free(p);
 }
 
@@ -68,5 +70,17 @@ void dl_insertNode(Data data, int index, DoubleList *L){
 }
 
 void dl_deleteNode(int index, DoubleList *L){
+    if(index < 0 || index > L->len){
+        printf("check index!\n");
+        exit(0);
+    }
+    
+    DuNode *element = dl_getElement(index, L);
+    element->former->next = element->next;
+    element->next->former = element->former;
+    dl_freeNode(element);
+}
+
+void dl_printfDoubleList(DoubleList *L){
     
 }
