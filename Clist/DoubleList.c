@@ -58,17 +58,6 @@ DuNode *dl_getElement(int index, DoubleList *L){
             node = node->former;
         }
     }
-    
-    if (index == L->len-1) {
-        // 查找最后一个
-        return L->tail;
-    }
-    
-    
-    while (node && i < index) {
-        node = node->next;
-        ++i;
-    }
     return node;
 }
 
@@ -79,22 +68,44 @@ void dl_insertNode(Data data, int index, DoubleList *L){
     }
     
     DuNode *node = dl_createNode(data);
-    DuNode *element = dl_getElement(index, L);
+    if (index == 0) {
+        node->next = L->head;
+        L->head = node;
+        L->len += 1;
+        return;
+    }else if(index == L->len){
+        // 在队尾插入
+        L->tail = node; // 修改尾指针
+    }
+    DuNode *element = dl_getElement(index-1, L);
     
-    element->former->next = node;
-    node->former = element->former;
-    node->next = element;
-    element->former = node;
+    node->next = element->next;
+    element->next = node;
+    node->former = element;
     L->len += 1;
 }
 
 void dl_deleteNode(int index, DoubleList *L){
-    if(index < 0 || index > L->len){
+    if(index < 0 || index >= L->len){
         printf("check index!\n");
         exit(0);
     }
     
     DuNode *element = dl_getElement(index, L);
+    if (index == 0) {
+       // 删除头结点
+        L->head = element->next;
+        element->former = element->next = NULL;
+        dl_freeNode(element);
+        return;
+    }else if(index == L->len-1){
+        // 在队尾删除
+        L->tail = element->former;
+        element->former = element->next = NULL;
+        dl_freeNode(element);
+        return;
+    }
+
     element->former->next = element->next;
     element->next->former = element->former;
     -- L->len;
@@ -106,6 +117,11 @@ void dl_printfDoubleList(DoubleList *L){
     int i = 0;
     while (i < L->len) {
         printf("i:%d----currentP:%p-------formerP:%p------data:%d-------next:%p\n", i, element, element->former, element->data, element->next);
+        element = element->next;
         i ++;
     }
+}
+
+void dl_updateHeader(DoubleList *L){
+    
 }

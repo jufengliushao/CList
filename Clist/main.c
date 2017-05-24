@@ -8,19 +8,13 @@
 
 #include <stdio.h>
 #include "SignalList.h"
+#include "DoubleList.h"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    Node *header = sl_returnHeaderNode();
-    sl_insertNode(0, 201, header);
-    sl_insertNode(1, 202, header);
-    sl_insertNode(0, 203, header);
-    sl_insertNode(1, 204, header);
-    sl_insertNode(2, 200, header);
-    sl_insertNode(2, 201, header);
-    sl_printNode(header);
-    printf("\n\n");
-    sl_bubbleSortList(header);
-    sl_printNode(header);
+    DoubleList *doubleL = dl_returnHeaderNode();
+    dl_insertNode(201, 0, doubleL);
+    dl_insertNode(200, 1, doubleL);
+    dl_printfDoubleList(doubleL);
     return 0;
 }
