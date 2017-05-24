@@ -8,13 +8,65 @@
 
 #include "DoubleList.h"
 
-DuNode* dl_returnHeaderNode(){
-    DuNode *header = (duNode)malloc(sizeof(DuNode));
-    if (!header) {
-        printf("double-list header create fail!");
+DoubleList* dl_returnHeaderNode(){
+    DoubleList *b = (doubleList)malloc(sizeof(DoubleList));
+    if (!b) {
+        printf("create header fail!");
+        exit(0);
     }
-    header->data = 0;
-    header->former = NULL;
-    header->next = NULL;
-    return header;
+    b->len = 0;
+    b->head = NULL;
+    b->tail = NULL;
+    return b;
+}
+
+void dl_freeNode(DuNode *p){
+    free(p);
+}
+
+DuNode *dl_createNode(Data data){
+    DuNode *node = (duNode)malloc(sizeof(DuNode));
+    if (!node) {
+        printf("double-list node create fail!\n");
+        exit(0);
+    }
+    node->data = data;
+    node->former = NULL;
+    node->next = NULL;
+    return node;
+}
+
+DuNode *dl_getElement(int index, DoubleList *L){
+    if (index >= L->len || index < 0) {
+        printf("check index!\n");
+        exit(0);
+    }
+    
+    DuNode *node = L->head;
+    int i = 0;
+    while (node && i < index) {
+        node = node->next;
+        ++i;
+    }
+    return node;
+}
+
+void dl_insertNode(Data data, int index, DoubleList *L){
+    if (index > L->len || index < 0) {
+        printf("check index!\n");
+        exit(0);
+    }
+    
+    DuNode *node = dl_createNode(data);
+    DuNode *element = dl_getElement(index, L);
+    
+    element->former->next = node;
+    node->former = element->former;
+    node->next = element;
+    element->former = node;
+    L->len += 1;
+}
+
+void dl_deleteNode(int index, DoubleList *L){
+    
 }
