@@ -46,6 +46,25 @@ DuNode *dl_getElement(int index, DoubleList *L){
     
     DuNode *node = L->head;
     int i = 0;
+    if((L->len-1) / 2 > index){
+        // 从前往后搜索
+        while (node && i < index) {
+            node = node->next;
+            ++i;
+        }
+    }else{
+        i = L->len - 1;
+        while (node && index < i) {
+            node = node->former;
+        }
+    }
+    
+    if (index == L->len-1) {
+        // 查找最后一个
+        return L->tail;
+    }
+    
+    
     while (node && i < index) {
         node = node->next;
         ++i;
@@ -78,9 +97,15 @@ void dl_deleteNode(int index, DoubleList *L){
     DuNode *element = dl_getElement(index, L);
     element->former->next = element->next;
     element->next->former = element->former;
+    -- L->len;
     dl_freeNode(element);
 }
 
 void dl_printfDoubleList(DoubleList *L){
-    
+    DuNode *element = L->head;
+    int i = 0;
+    while (i < L->len) {
+        printf("i:%d----currentP:%p-------formerP:%p------data:%d-------next:%p\n", i, element, element->former, element->data, element->next);
+        i ++;
+    }
 }

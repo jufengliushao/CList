@@ -17,9 +17,9 @@
 typedef int Data;
 
 typedef struct DuList{
-    Data data;
-    struct DuList *former;
-    struct DuList *next;
+    Data data; // 数据域
+    struct DuList *former; // 前指针
+    struct DuList *next; // 后指针
 }DuNode, *duNode;
 
 typedef struct {
@@ -74,4 +74,11 @@ void dl_insertNode(Data data, int index, DoubleList *L);
  @param L 头指针
  */
 void dl_deleteNode(int index, DoubleList *L);
+
+/**
+ 打印L的双向链表
+
+ @param L 头指针
+ */
+void dl_printfDoubleList(DoubleList *L);
 #endif /* DoubleList_h */
