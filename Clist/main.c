@@ -17,6 +17,7 @@ int main(int argc, const char * argv[]) {
     dl_insertNode(200, 1, doubleL);
     dl_insertNode(202, 2, doubleL);
     dl_printfDoubleList(doubleL);
-    dl_printNode(dl_public_getElement(3, doubleL));
+    dl_deleteNode(-1, doubleL);
+    dl_printfDoubleList(doubleL);
     return 0;
 }

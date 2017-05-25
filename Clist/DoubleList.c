@@ -17,7 +17,7 @@
  */
 DuNode *dl_prative_getElement(int index, DoubleList *L);
 
-DuNode* dl_private_returnIndex(int index, DoubleList *L);
+DuNode* dl_private_returnIndex(int index, DoubleList *L); // 私有获取指定下标的结点
 
 DoubleList* dl_returnHeaderNode(){
     DoubleList *b = (doubleList)malloc(sizeof(DoubleList));
@@ -136,24 +136,24 @@ void dl_deleteNode(int index, DoubleList *L){
         exit(0);
     }
     
-    DuNode *element = dl_prative_getElement(index, L);
+    DuNode *element = dl_public_getElement(index, L);
     if (index == 0) {
        // 删除头结点
-        element = L->head;
         L->head = element->next;
-        if (element->next) {
-           element->next->former = NULL;
+        if (L->len == 1) {
+            L->tail = L->head = NULL;
+        }else{
+            element->next->former = NULL;
         }
-        element->former = element->next = NULL;
+        L->len -= 1;
         dl_freeNode(element);
-        -- L->len;
         return;
     }else if(index == L->len-1){
         // 在队尾删除
         L->tail = element->former;
-        element->former = element->next = NULL;
+        element->former->next = NULL;
+        L->len -= 1;
         dl_freeNode(element);
-        -- L->len;
         return;
     }
 
