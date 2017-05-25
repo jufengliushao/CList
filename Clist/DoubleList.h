@@ -42,13 +42,13 @@ DoubleList* dl_returnHeaderNode();
 void dl_freeNode(DuNode *p);
 
 /**
- 返回对应的节点
+ public 获取指定顺序的结点
 
- @param index 结点 从0开始
- @param L 头结点
+ @param index index 从0开始
+ @param L DoubleList
  @return DuNode
  */
-DuNode *dl_getElement(int index, DoubleList *L);
+DuNode* dl_public_getElement(int index, DoubleList *L);
 
 /**
  创建结点

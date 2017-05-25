@@ -8,6 +8,17 @@
 
 #include "DoubleList.h"
 
+/**
+ 返回对应的节点
+ 
+ @param index 结点 从0开始
+ @param L 头结点
+ @return DuNode
+ */
+DuNode *dl_prative_getElement(int index, DoubleList *L);
+
+DuNode* dl_private_returnIndex(int index, DoubleList *L);
+
 DoubleList* dl_returnHeaderNode(){
     DoubleList *b = (doubleList)malloc(sizeof(DoubleList));
     if (!b) {
@@ -38,12 +49,25 @@ DuNode *dl_createNode(Data data){
     return node;
 }
 
-DuNode *dl_getElement(int index, DoubleList *L){
+DuNode *dl_prative_getElement(int index, DoubleList *L){
     if (index > L->len || index < 0) {
         printf("check index!\n");
         exit(0);
     }
     
+    return dl_private_returnIndex(index, L);
+}
+
+DuNode* dl_public_getElement(int index, DoubleList *L){
+    if (index >= L->len || index < 0) {
+        printf("check index!\n");
+        exit(0);
+    }
+    
+    return dl_private_returnIndex(index, L);
+}
+
+DuNode* dl_private_returnIndex(int index, DoubleList *L){
     DuNode *node = L->head;
     int i = 0;
     if(L->len / 2 > index){
@@ -85,14 +109,22 @@ void dl_insertNode(Data data, int index, DoubleList *L){
         }
         L->head = node;
         L->len += 1;
+        if (L->len == 1) {
+            L->tail = node; // 链表中只有一个元素，使尾指针指向元素
+        }
         return;
-    }else if(index == L->len-1){
+    }else if(index == L->len){
         // 在队尾插入
-        L->tail = node; // 修改尾指针
+        node->former = L->tail;
+        L->tail = node;
+        node->former->next = node;
+        L->len += 1;
+        return;
     }
-    DuNode *element = dl_getElement(index-1, L);
+    DuNode *element = dl_prative_getElement(index, L);
     
     node->next = element->next;
+    node->next->former = element;
     element->next = node;
     node->former = element;
     L->len += 1;
@@ -104,7 +136,7 @@ void dl_deleteNode(int index, DoubleList *L){
         exit(0);
     }
     
-    DuNode *element = dl_getElement(index, L);
+    DuNode *element = dl_prative_getElement(index, L);
     if (index == 0) {
        // 删除头结点
         element = L->head;
@@ -136,7 +168,9 @@ void dl_printfDoubleList(DoubleList *L){
     int i = 0;
     while (i < L->len) {
         printf("i:%d---", i);
-        element = element->next;
+        if(i){
+          element = element->next;
+        }
         dl_printNode(element);
         i ++;
     }
