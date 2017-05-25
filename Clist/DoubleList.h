@@ -83,4 +83,12 @@ void dl_deleteNode(int index, DoubleList *L);
 void dl_printfDoubleList(DoubleList *L);
 
 void dl_printNode(DuNode *element);
+
+/**
+ 按照奇偶数进行分割双向链表
+
+ @param L 源链表
+ @return 返回偶数的链表，同是原链表已变成奇数链表
+ */
+DoubleList * dl_departmentDoubleListOdd(DoubleList *L);
 #endif /* DoubleList_h */

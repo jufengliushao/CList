@@ -180,6 +180,53 @@ void dl_printNode(DuNode *element){
     printf("currentP:%p-------formerP:%p------data:%d-------next:%p\n", element, element->former, element->data, element->next);
 }
 
-void dl_updateHeader(DoubleList *L){
+DoubleList * dl_departmentDoubleListOdd(DoubleList *L){
+    DoubleList *L1 = (doubleList)malloc(sizeof(DoubleList));
+    if (!L1) {
+        printf("malloc fail!");
+        exit(0);
+    }
+    L1->len = 0;
+    if (!L->len) {
+        printf("List is empty!");
+        exit(0);
+    }
     
+    int i = 0, total = L->len - 1;
+    DuNode *node = L->head;
+    DuNode *tailL1 = NULL;
+    while (i < total+1) {
+        if (i) {
+            node = node->next;
+        }
+        if (i%2==0) {
+            L1->len ++;
+            L->len --;
+            // 奇数
+            if (!i) {
+                // 第一个结点
+                L1->tail = L1->head = node;
+                L->head = node->next;
+                tailL1 = node;
+                ++i;
+                continue;
+            }
+            if (i == total) {
+                // 最后一个
+                L->tail = node->former;
+                node->former->next = NULL;
+                node->next = NULL;
+            }else{
+                // 正常添加
+                node->former->next = node->next;
+                node->next->former = node->former;
+            }
+            tailL1->next = node;
+            node->former = tailL1;
+            L1->tail = node;
+            tailL1 = node;
+        }
+        ++i;
+    }
+    return L1;
 }
