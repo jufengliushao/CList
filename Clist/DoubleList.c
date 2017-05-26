@@ -230,3 +230,40 @@ DoubleList * dl_departmentDoubleListOdd(DoubleList *L){
     }
     return L1;
 }
+
+void dl_bublleSort(DoubleList *L){
+    if (L->len) {
+        printf("The double-list is empty!");
+        exit(0);
+    }
+    
+    DuNode *node = L->head;
+    int exchange = 1;
+    int i = 0;
+    if(L->len == 1) return; // 只有一个结点不需要排序
+    while (exchange && node) {
+        exchange = 0;
+        i = 0;
+        while (node->next) {
+            if (node->data > node->next->data) {
+                // 交换
+                if (!i) {
+                    //为第一个结点 a->data > b->data b->next = c
+                    L->head = node->next; // L->head = b
+                }else{
+                    node->former->next = node->next;
+                }
+                if (i == L->len - 2) {
+                    // 最后倒数第二个
+                    L->tail = node;
+                }
+                
+                // 通用交换
+                node->former->next = node->next;
+                node->next->former = node->former;
+                node->former = node->next;
+                node->next = node->former->next;
+            }
+        }
+    }
+}
