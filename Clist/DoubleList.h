@@ -91,4 +91,12 @@ void dl_printNode(DuNode *element);
  @return 返回偶数的链表，同时原链表已变成奇数链表
  */
 DoubleList * dl_departmentDoubleListOdd(DoubleList *L);
+
+/**
+ 合并两个链表 升序
+
+ @param L1 从小到大的链表
+ @param L2 从小到大的链表
+ */
+void dl_mergeDoubleList_ASC(DoubleList *L1, DoubleList *L2);
 #endif /* DoubleList_h */

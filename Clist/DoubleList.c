@@ -7,6 +7,7 @@
 //
 
 #include "DoubleList.h"
+#include <string.h>
 
 /**
  返回对应的节点
@@ -18,6 +19,7 @@
 DuNode *dl_prative_getElement(int index, DoubleList *L);
 
 DuNode* dl_private_returnIndex(int index, DoubleList *L); // 私有获取指定下标的结点
+void dl_private_deepCopy(DuNode *dest, DuNode *source); // 深拷贝
 
 DoubleList* dl_returnHeaderNode(){
     DoubleList *b = (doubleList)malloc(sizeof(DoubleList));
@@ -266,4 +268,59 @@ void dl_bublleSort(DoubleList *L){
             }
         }
     }
+}
+
+void dl_mergeDoubleList_ASC(DoubleList *L1, DoubleList *L2){
+    if (L1->len < 1 && L2->len < 1) {
+        printf("The list is empty!");
+        exit(0);
+    }
+    
+    DuNode *element_L1 = L1->head;
+    DuNode *element_L2 = L2->head;
+    DuNode *tmp1 = dl_createNode(0);
+    dl_private_deepCopy(tmp1, element_L1);
+    DuNode *tmp2 = dl_createNode(0);
+    dl_private_deepCopy(tmp2, element_L2);
+    while (element_L1 && element_L2) {
+        if(element_L1->data > element_L2->data){
+            if(!element_L1->former){
+                // 在L1的头插入
+                L1->head = element_L2;
+            }else{
+                element_L1->former->next = element_L2;
+            }
+            element_L2->former = element_L1->former;
+            element_L2->next = element_L1;
+            element_L1->former = element_L2;
+            element_L2 = tmp2->next;
+            dl_private_deepCopy(tmp2, element_L2);
+            L1->len ++;
+        }else{
+            if (element_L1->next == NULL) {
+                // 在L1的尾结点插入
+                L1->tail = element_L2;
+                element_L2->next = NULL;
+                element_L2->former = element_L1;
+                element_L1->next = element_L2;
+                element_L1 = element_L1->next;
+                dl_private_deepCopy(tmp1, element_L1);
+                element_L2 = tmp2->next;
+                dl_private_deepCopy(tmp2, element_L2);
+                L1->len ++;
+            }else{
+                element_L1 = tmp1->next;
+                dl_private_deepCopy(tmp1, element_L1);
+            }
+        }
+    }
+}
+
+void dl_private_deepCopy(DuNode *dest, DuNode *source){
+    if (!source) {
+        return;
+    }
+    dest->data = source->data;
+    dest->former = source->former;
+    dest->next = source->next;
 }
