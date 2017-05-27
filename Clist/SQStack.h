@@ -44,7 +44,18 @@ void sq_push(SQstack *stack, DATA data);
  */
 void sq_pop(SQstack *stack);
 
+/**
+ 判断是否为空
+
+ @param stack 栈
+ */
 void sq_isEmpty(SQstack *stack);
+
+/**
+ 返回栈的长度
+
+ @param stack 栈
+ */
 void sq_lengthOfStack(SQstack *stack);
 
 #endif /* SQStack_h */

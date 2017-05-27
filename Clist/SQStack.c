@@ -36,7 +36,7 @@ void sq_pop(SQstack *stack){
         printf("the stack is empty!");
         exit(0);
     }
-    sq_private_printTheData(stack->data[stack->top]);
+    sq_private_printTheData(stack->data[stack->top-1]);
     stack->top --;
 }
 
