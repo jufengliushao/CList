@@ -22,10 +22,27 @@ typedef struct {
     int top;
 }SQstack, *sqStack;
 
+/**
+ 初始化
+
+ @return SQstack
+ */
 SQstack *sq_initStack();
 
+/**
+ 添加元素
+
+ @param stack 栈
+ @param data 数据
+ */
 void sq_push(SQstack *stack, DATA data);
-void sq_pop(SQstack *stack, DATA data);
+
+/**
+ 栈顶元素出栈
+
+ @param stack 栈
+ */
+void sq_pop(SQstack *stack);
 
 void sq_isEmpty(SQstack *stack);
 void sq_lengthOfStack(SQstack *stack);

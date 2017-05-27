@@ -31,7 +31,7 @@ void sq_push(SQstack *stack, DATA data){
     stack->top ++;
 }
 
-void sq_pop(SQstack *stack, DATA data){
+void sq_pop(SQstack *stack){
     if(!stack->top){
         printf("the stack is empty!");
         exit(0);
