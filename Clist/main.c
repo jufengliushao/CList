@@ -23,9 +23,9 @@ int main(int argc, const char * argv[]) {
     printf("\n\n\n");
     
     DoubleList *doubleR = dl_returnHeaderNode();
-    dl_insertNode(206, 0, doubleR);
-    dl_insertNode(205, 0, doubleR);
-    dl_insertNode(204, 0, doubleR);
+    dl_insertNode(209, 0, doubleR);
+    dl_insertNode(208, 0, doubleR);
+    dl_insertNode(207, 0, doubleR);
     dl_insertNode(203, 0, doubleR);
     dl_insertNode(202, 0, doubleR);
     dl_insertNode(201, 0, doubleR);
