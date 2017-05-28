@@ -52,7 +52,7 @@ void stack_private_judegemntChar(char ch, SQstack *stack){
             break;
             
         case '\n':{
-            sq_popAllElement(stack);
+            sq_popElementFromBottom(stack);
         }
             break;
             

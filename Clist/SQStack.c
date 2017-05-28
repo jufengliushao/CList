@@ -80,3 +80,20 @@ void sq_lengthOfStack(SQstack *stack){
 void sq_private_printTheData(DATA data){
     printf("pop the data:%c\n", data);
 }
+
+void sq_popElementFromBottom(SQstack *stack){
+    sq_isEmpty(stack);
+    
+    char string[MAX_LENGTH];
+    int i = 0;
+    while (stack->top) {
+        string[i] = stack->data[stack->top-1];
+        stack->top --;
+        i ++;
+    }
+    
+    while (i >= 0) {
+        printf("%c", string[i--]);
+    }
+    printf("\n");
+}

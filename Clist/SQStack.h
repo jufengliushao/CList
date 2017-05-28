@@ -79,4 +79,11 @@ void sq_emptyStack(SQstack *stack);
  */
 void sq_clearTopElement(SQstack *stack);
 
+/**
+ 从栈底开始输出元素
+
+ @param stack SQstack
+ */
+void sq_popElementFromBottom(SQstack *stack);
+
 #endif /* SQStack_h */
