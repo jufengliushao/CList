@@ -58,4 +58,25 @@ void sq_isEmpty(SQstack *stack);
  */
 void sq_lengthOfStack(SQstack *stack);
 
+/**
+ 打印所有数据
+
+ @param stack SQstack
+ */
+void sq_popAllElement(SQstack *stack);
+
+/**
+ 清空栈
+
+ @param stack SQstack
+ */
+void sq_emptyStack(SQstack *stack);
+
+/**
+ 回退栈顶元素，不打印
+
+ @param stack SQstack
+ */
+void sq_clearTopElement(SQstack *stack);
+
 #endif /* SQStack_h */

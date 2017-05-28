@@ -14,6 +14,7 @@
  @param data 打印数据
  */
 void sq_private_printTheData(DATA data);
+void sq_private_isEmpty(SQstack *stack);
 
 SQstack *sq_initStack(){
     SQstack *stack = (sqStack)malloc(sizeof(SQstack));
@@ -32,12 +33,18 @@ void sq_push(SQstack *stack, DATA data){
 }
 
 void sq_pop(SQstack *stack){
-    if(!stack->top){
-        printf("the stack is empty!");
-        exit(0);
-    }
+    sq_private_isEmpty(stack);
     sq_private_printTheData(stack->data[stack->top-1]);
     stack->top --;
+}
+
+void sq_popAllElement(SQstack *stack){
+    sq_private_isEmpty(stack);
+    while (stack->top) {
+        printf("%c", stack->data[stack->top-1]);
+        stack->data[stack->top-1] = 0;
+        stack->top --;
+    }
 }
 
 void sq_isEmpty(SQstack *stack){
@@ -46,10 +53,30 @@ void sq_isEmpty(SQstack *stack){
     }
 }
 
+void sq_emptyStack(SQstack *stack){
+    while (stack->top) {
+        stack->data[stack->top-1] = 0;
+        stack->top --;
+    }
+}
+
+void sq_clearTopElement(SQstack *stack){
+    sq_private_isEmpty(stack);
+    stack->data[stack->top-1] = 0;
+    stack->top --;
+}
+
+void sq_private_isEmpty(SQstack *stack){
+    if(!stack->top){
+        printf("the stack is empty!");
+        exit(0);
+    }
+}
+
 void sq_lengthOfStack(SQstack *stack){
     printf("the stack length is:%d", stack->top);
 }
 
 void sq_private_printTheData(DATA data){
-    printf("pop the data:%d\n", data);
+    printf("pop the data:%c\n", data);
 }
