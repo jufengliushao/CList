@@ -15,6 +15,6 @@
  输入清空功能
  */
 void stack_inputFunction();
-
+void stack_transform();
 
 #endif /* SQStackFunction_h */
