@@ -8,14 +8,19 @@
 
 #include "SQStackFunction.h"
 #include "SQStack.h"
-
+/**********************************************************************/
 /**
  input message
  */
 void stack_private_remindMessage();
 void stack_private_getChar(SQstack *stack);
 void stack_private_judegemntChar(char ch, SQstack *stack);
+/**********************************************************************/
 
+/**********************************************************************/
+
+/* -------------------------------------------------------------- */
+/* ---------------------- input function ------------------------ */
 void stack_inputFunction(){
     SQstack *stack = sq_initStack();
     stack_private_remindMessage();
@@ -62,3 +67,7 @@ void stack_private_judegemntChar(char ch, SQstack *stack){
             break;
     }
 }
+/* ---------------------- input function end -------------------- */
+/* -------------------------------------------------------------- */
+
+
