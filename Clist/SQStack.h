@@ -64,6 +64,7 @@ void sq_lengthOfStack(SQstack *stack);
  @param stack SQstack
  */
 void sq_popAllElement(SQstack *stack);
+void sq_popAllElement_int(SQstack *stack);
 
 /**
  清空栈

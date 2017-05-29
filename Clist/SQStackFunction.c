@@ -73,7 +73,7 @@ void stack_private_judegemntChar(char ch, SQstack *stack){
 /* -------------------------------------------------------------- */
 /* ------------------------ data transform ---------------------- */
 
-void stack_private_transformMessage(int source, int aim);
+int* stack_private_transformMessage();
 void stack_private_transformDataJudgemnt(int data);
 void stack_private_transformLenght(int length, int data);
 void stack_private_transformPrintResult(int data, int length, SQstack *stack);
@@ -82,14 +82,13 @@ void stack_private_transform_sixteen_result(SQstack *stack);
 char stack_private_transform_sixteen_replace(int source);
 
 void stack_transform(){
-    int source = 0, aim = 0;
-    stack_private_transformMessage(source, aim);
+    int *source = stack_private_transformMessage();
     
     SQstack *stack = sq_initStack();
-    stack_private_computer(source, aim, stack);
+    stack_private_computer(source[0], source[1], stack);
 }
 
-void stack_private_transformMessage(int source, int aim){
+int* stack_private_transformMessage(int source, int aim){
     printf("------------------------------\n");
     printf("----------- 进制转化 ----------\n");
     printf("------------------------------\n");
@@ -97,12 +96,14 @@ void stack_private_transformMessage(int source, int aim){
     int data = 0;
     scanf("%d", &data);
     stack_private_transformDataJudgemnt(data);
-    source = data;
     printf("please input the termail: 2-二进制, 8-八进制, 10-十进制, 16-十六进制\n");
     int length = 0;
     scanf("%d", &length);
     stack_private_transformLenght(length, data);
-    aim = length;
+    int *reult = (int *)malloc(sizeof(int) * 2);
+    reult[0] = data;
+    reult[1] = length;
+    return reult;
 }
 
 void stack_private_transformDataJudgemnt(int data){
@@ -114,25 +115,13 @@ void stack_private_transformDataJudgemnt(int data){
 
 void stack_private_transformLenght(int length, int data){
     switch (length) {
-        case 2:{
-            
-        }
-            break;
+        case 2:
         
-        case 8:{
+        case 8:
             
-        }
-            break;
+        case 10:
             
-        case 10:{
-            
-        }
-            break;
-            
-        case 16:{
-            
-        }
-            break;
+        case 16: break;
             
         default:{
             printf("please check your input!\n");
@@ -156,9 +145,9 @@ void stack_private_transformPrintResult(int data, int length, SQstack *stack){
     if (length == 10) {
         printf("%d\n", data);
     }else if (length == 16){
-        
+        stack_private_transform_sixteen_result(stack);
     }else{
-        sq_popAllElement(stack);
+        sq_popAllElement_int(stack);
         printf("\n");
     }
     
@@ -168,12 +157,14 @@ void stack_private_transformPrintResult(int data, int length, SQstack *stack){
 void stack_private_transform_sixteen_result(SQstack *stack){
     while (stack->top) {
         int a = sq_returnTopElementWithoutPrint(stack);
-        if (a > 9) {
+        if (a < 10) {
             printf("%d", a);
         }else{
             printf("%c", stack_private_transform_sixteen_replace(a));
         }
+        stack->top -= 1;
     }
+    printf("\n");
 }
 
 char stack_private_transform_sixteen_replace(int source){

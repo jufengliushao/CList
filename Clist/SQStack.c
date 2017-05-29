@@ -47,6 +47,15 @@ void sq_popAllElement(SQstack *stack){
     }
 }
 
+void sq_popAllElement_int(SQstack *stack){
+    sq_private_isEmpty(stack);
+    while (stack->top) {
+        printf("%d", stack->data[stack->top-1]);
+        stack->data[stack->top-1] = 0;
+        stack->top --;
+    }
+}
+
 void sq_isEmpty(SQstack *stack){
     if (!stack->top) {
         printf("The stack is empty");
