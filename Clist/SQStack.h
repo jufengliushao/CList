@@ -86,4 +86,12 @@ void sq_clearTopElement(SQstack *stack);
  */
 void sq_popElementFromBottom(SQstack *stack);
 
+/**
+ 返回top元素，不打印
+
+ @param stack SQstack
+ @return top element
+ */
+int sq_returnTopElementWithoutPrint(SQstack *stack);
+
 #endif /* SQStack_h */

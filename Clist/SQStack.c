@@ -97,3 +97,7 @@ void sq_popElementFromBottom(SQstack *stack){
     }
     printf("\n");
 }
+
+int sq_returnTopElementWithoutPrint(SQstack *stack){
+    return stack->data[stack->top - 1];
+}
