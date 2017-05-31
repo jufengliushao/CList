@@ -224,9 +224,14 @@ char right_two = '}';
 void stack_private_bracketsRemid();
 int stack_private_bracketsCheckRight(char ch);
 int stack_private_bracketsCheckLeft(char ch);
+void stack_private_bracketsReadMessage(SQstack *stack);
+int stack_private_bracketsCheckType(char ch);
+int stack_private_bracketsCheckCorrect(char ch, SQstack *stack);
 
 void stack_brackets(){
-    
+    stack_private_bracketsRemid();
+    SQstack *stack = sq_initStack();
+    stack_private_bracketsReadMessage(stack);
 }
 
 void stack_private_bracketsRemid(){
@@ -237,8 +242,20 @@ void stack_private_bracketsRemid(){
     printf("##now you can input message:");
 }
 
-void stack_private_bracketsReadMessage(){
-    
+void stack_private_bracketsReadMessage(SQstack *stack){
+    char input = '\0';
+    while (1) {
+        input = getchar();
+        if (stack_private_bracketsCheckRight(input)) {
+            if (!stack_private_bracketsCheckCorrect(input, stack)) {
+                break;
+            }
+        }else{
+            sq_push(stack, input);
+        }
+    }
+    printf("\nyou input is wrong!\n");
+    exit(0);
 }
 
 int stack_private_bracketsCheckRight(char ch){
@@ -247,4 +264,28 @@ int stack_private_bracketsCheckRight(char ch){
 
 int stack_private_bracketsCheckLeft(char ch){
     return ch == left_one ? TRUE : (ch == right_two ? TRUE : FALSE);
+}
+
+int stack_private_bracketsCheckType(char ch){
+    return ch == right_one ? 1 : 2;
+}
+
+int stack_private_bracketsCheckCorrect(char ch, SQstack *stack){
+    char top = sq_returnTopElementWithoutPrint(stack);
+    char aim = stack_private_bracketsCheckType(ch) == 1 ? left_one : left_two;
+    char isRight = 0;
+    while (stack->top) {
+        if (top == aim) {
+            isRight = 1;
+            break;
+        }
+        
+        if (stack_private_bracketsCheckLeft(top)) {
+            isRight = 0;
+            break;
+        }
+        stack->top -= 1;
+        top = sq_returnTopElementWithoutPrint(stack);
+    }
+    return isRight;
 }

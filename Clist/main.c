@@ -13,6 +13,6 @@
 #include "SQStackFunction.h"
 int main(int argc, const char * argv[]) {
     // insert code here...
-    stack_transform();
+    stack_brackets();
     return 0;
 }

@@ -15,6 +15,15 @@
  输入清空功能
  */
 void stack_inputFunction();
+
+/**
+ 进制转换
+ */
 void stack_transform();
+
+/**
+ 括号匹配
+ */
+void stack_brackets();
 
 #endif /* SQStackFunction_h */
