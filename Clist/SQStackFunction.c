@@ -8,6 +8,10 @@
 
 #include "SQStackFunction.h"
 #include "SQStack.h"
+
+#define FALSE 0
+#define TRUE 1
+
 /**********************************************************************/
 /**
  input message
@@ -116,11 +120,8 @@ void stack_private_transformDataJudgemnt(int data){
 void stack_private_transformLenght(int length, int data){
     switch (length) {
         case 2:
-        
         case 8:
-            
         case 10:
-            
         case 16: break;
             
         default:{
@@ -215,6 +216,15 @@ char stack_private_transform_sixteen_replace(int source){
 /* ---------------------- check ([ brackets function------------- */
 /* -------------------------------------------------------------- */
 
+char left_one = '[';
+char right_one = ']';
+char left_two = '{';
+char right_two = '}';
+
+void stack_private_bracketsRemid();
+int stack_private_bracketsCheckRight(char ch);
+int stack_private_bracketsCheckLeft(char ch);
+
 void stack_brackets(){
     
 }
@@ -223,5 +233,18 @@ void stack_private_bracketsRemid(){
     printf("------------------------------\n");
     printf("----------- 进制转化 ----------\n");
     printf("------------------------------\n");
+    printf("##you can input the value only []{}\n");
+    printf("##now you can input message:");
+}
+
+void stack_private_bracketsReadMessage(){
     
+}
+
+int stack_private_bracketsCheckRight(char ch){
+    return ch == right_one ? TRUE : (ch == right_two ? TRUE : FALSE);
+}
+
+int stack_private_bracketsCheckLeft(char ch){
+    return ch == left_one ? TRUE : (ch == right_two ? TRUE : FALSE);
 }
