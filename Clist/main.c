@@ -11,8 +11,10 @@
 #include "DoubleList.h"
 #include "SQStack.h"
 #include "SQStackFunction.h"
+#include "SQMazeFunction.h"
 int main(int argc, const char * argv[]) {
     // insert code here...
-    stack_brackets();
+    maze_initMap();
+    maze_getRoad();
     return 0;
 }

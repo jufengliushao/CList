@@ -21,7 +21,11 @@ typedef struct Po{
     PointSeat seat;
     int order;
     int isUse;
+    int data;
 }Point, *point;
 
+
+void maze_initMap();
+void maze_getRoad();
 
 #endif /* SQMazeFunction_h */

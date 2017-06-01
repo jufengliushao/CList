@@ -12,6 +12,7 @@
 		E6A7467B1ED90D4B00420AD9 /* SQStack.c in Sources */ = {isa = PBXBuildFile; fileRef = E6A746791ED90D4B00420AD9 /* SQStack.c */; };
 		E6A7467E1ED9273000420AD9 /* SQStackFunction.c in Sources */ = {isa = PBXBuildFile; fileRef = E6A7467C1ED9273000420AD9 /* SQStackFunction.c */; };
 		E6C487931EDE6F5B00D127FF /* SQMazeFunction.c in Sources */ = {isa = PBXBuildFile; fileRef = E6C487911EDE6F5B00D127FF /* SQMazeFunction.c */; };
+		E6C487961EDFB2B700D127FF /* SQMazeStack.c in Sources */ = {isa = PBXBuildFile; fileRef = E6C487941EDFB2B700D127FF /* SQMazeStack.c */; };
 		E6D25FB91ED096FA00766F1A /* SignalList.c in Sources */ = {isa = PBXBuildFile; fileRef = E64730011ECD9E9A00C5D073 /* SignalList.c */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,8 @@
 		E6A7467D1ED9273000420AD9 /* SQStackFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQStackFunction.h; sourceTree = "<group>"; };
 		E6C487911EDE6F5B00D127FF /* SQMazeFunction.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SQMazeFunction.c; sourceTree = "<group>"; };
 		E6C487921EDE6F5B00D127FF /* SQMazeFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQMazeFunction.h; sourceTree = "<group>"; };
+		E6C487941EDFB2B700D127FF /* SQMazeStack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SQMazeStack.c; sourceTree = "<group>"; };
+		E6C487951EDFB2B700D127FF /* SQMazeStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQMazeStack.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,8 @@
 				E6A746461ED3C31800420AD9 /* DoubleList.c */,
 				E6A7467A1ED90D4B00420AD9 /* SQStack.h */,
 				E6A746791ED90D4B00420AD9 /* SQStack.c */,
+				E6C487951EDFB2B700D127FF /* SQMazeStack.h */,
+				E6C487941EDFB2B700D127FF /* SQMazeStack.c */,
 				E6A7467D1ED9273000420AD9 /* SQStackFunction.h */,
 				E6A7467C1ED9273000420AD9 /* SQStackFunction.c */,
 				E6C487921EDE6F5B00D127FF /* SQMazeFunction.h */,
@@ -145,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6C487931EDE6F5B00D127FF /* SQMazeFunction.c in Sources */,
+				E6C487961EDFB2B700D127FF /* SQMazeStack.c in Sources */,
 				E6A7467B1ED90D4B00420AD9 /* SQStack.c in Sources */,
 				E6D25FB91ED096FA00766F1A /* SignalList.c in Sources */,
 				E6A746481ED3C31800420AD9 /* DoubleList.c in Sources */,
