@@ -10,19 +10,9 @@
 #define SQMazeFunction_h
 
 #include <stdio.h>
-#include "SQStack.h"
+#include "SQMazeStack.h"
 
-typedef struct PS{
-    int i;
-    int j;
-}PointSeat, *pointSeat;
 
-typedef struct Po{
-    PointSeat seat;
-    int order;
-    int isUse;
-    int data;
-}Point, *point;
 
 
 void maze_initMap();

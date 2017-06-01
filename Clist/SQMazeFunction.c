@@ -21,14 +21,14 @@ Point *maps[MAX_MAZE_LEGNTH_I][MAX_MAZE_LEGNTH_J];
 void maze_private_printMap();
 void maze_private_resetMaps();
 int maze_private_pointIsEmpty(Point *point);
-Point* maze_private_judegmentBack(Point *point);
+Point* maze_private_judegmentBack(Point *point, SQMazeStack *stack);
 void maze_private_printPoint(Point *point);
-void maze_private_getRoad(SQstack *stack);
+void maze_private_getRoad(SQMazeStack *stack);
 
-void maze_private_setRoadPoint(Point *point, SQstack *stack); // 设成路径上的点
-void maze_private_setUnroadPoint(Point *point, SQstack *stack); // 设成未使用的点
+void maze_private_setRoadPoint(Point *point, SQMazeStack *stack); // 设成路径上的点
+void maze_private_setUnroadPoint(Point *point, SQMazeStack *stack); // 设成未使用的点
 
-Point* maze_private_backPoint(Point *point, SQstack *stack); // 路径回退
+Point* maze_private_backPoint(Point *point, SQMazeStack *stack); // 路径回退
 
 void maze_initMap(){
     for(int i = 0; i < MAX_MAZE_LEGNTH_I; i ++){
@@ -52,7 +52,7 @@ void maze_initMap(){
 }
 
 void maze_getRoad(){
-    SQstack *stack = sq_initStack();
+    SQMazeStack *stack = sq_maze_initMaze();
     maze_private_getRoad(stack);
 }
 
@@ -75,6 +75,7 @@ void maze_private_resetMaps(){
         for (int j = 0; j < total; j ++) {
             int col = rand()%(MAX_MAZE_LEGNTH_J-2) + 1;
             maps[i][col]->data = '#';
+            printf("(%d,%d)\t\n", i, col);
         }
         i ++;
     }
@@ -89,20 +90,19 @@ void maze_private_printMap(){
     }
 }
 
-Point* maze_private_judegmentBack(Point *point){
-    // 顺时针
+Point* maze_private_judegmentBack(Point *point, SQMazeStack *stack){
+    // 逆时针
     if (point->seat.j + 1 < MAX_MAZE_LEGNTH_J && maze_private_pointIsEmpty(maps[point->seat.i][point->seat.j+1])) {
         return maps[point->seat.i][point->seat.j+1];
-    }else if (point->seat.i - 1>0 && maze_private_pointIsEmpty(maps[point->seat.i-1][point->seat.j])){
-        return maps[point->seat.i-1][point->seat.j];
-    }else if (point->seat.j - 1 > 0 && maze_private_pointIsEmpty(maps[point->seat.i][point->seat.j-1])){
-        return maps[point->seat.i][point->seat.j-1];
     }else if (point->seat.i + 1<MAX_MAZE_LEGNTH_I && maze_private_pointIsEmpty(maps[point->seat.i+1][point->seat.j])){
         return maps[point->seat.i+1][point->seat.j];
+    }else if (point->seat.j - 1 > 0 && maze_private_pointIsEmpty(maps[point->seat.i][point->seat.j-1])){
+        return maps[point->seat.i][point->seat.j-1];
+    }else if (point->seat.i - 1>0 && maze_private_pointIsEmpty(maps[point->seat.i-1][point->seat.j])){
+        return maps[point->seat.i-1][point->seat.j];
     }
-    Point *point1 = malloc(sizeof(Point));
-    point1->data = -1;
-    return point1;
+    
+    return maze_private_judegmentBack(maze_private_backPoint(point, stack), stack);
 }
 
 int maze_private_pointIsEmpty(Point *point){
@@ -112,31 +112,35 @@ int maze_private_pointIsEmpty(Point *point){
     return TRUE;
 }
 
-void maze_private_getRoad(SQstack *stack){
+void maze_private_getRoad(SQMazeStack *stack){
     Point *point = maps[0][0];
-    sq_push(stack, point);
+    maze_private_setRoadPoint(point, stack);
+    sq_maze_push(stack, point);
     while (point->data != -1 || (point->seat.i != MAX_MAZE_LEGNTH_I-1 && point->seat.j != MAX_MAZE_LEGNTH_J-1)) {
-        point = maze_private_judegmentBack(point);
+        point = maze_private_judegmentBack(point, stack);
+        maze_private_setRoadPoint(point, stack);
+        sq_maze_push(stack, point);
+        maze_private_printPoint(point);
     }
-    maze_private_printPoint(point);
 }
 
-void maze_private_setRoadPoint(Point *point, SQstack *stack){
+void maze_private_setRoadPoint(Point *point, SQMazeStack *stack){
     point->isUse = 1;
     point->data = '*';
-    point->order = stack->top-1;
+    point->order = stack->top;
 }
 
-void maze_private_setUnroadPoint(Point *point, SQstack *stack){
+void maze_private_setUnroadPoint(Point *point, SQMazeStack *stack){
     point->isUse = 0;
     point->data = ' ';
     point->order = 0;
 }
 
-Point* maze_private_backPoint(Point *point, SQstack *stack){
+Point* maze_private_backPoint(Point *point, SQMazeStack *stack){
     maze_private_setUnroadPoint(point, stack);
-    sq_pop(stack);
-    return stack->data[stack->top-1];
+    point->isUse = 1;
+    sq_maze_pop(stack);
+    return &stack->point[stack->top-1];
 }
 
 void maze_private_printPoint(Point *point){
