@@ -14,6 +14,7 @@
 		E6C487931EDE6F5B00D127FF /* SQMazeFunction.c in Sources */ = {isa = PBXBuildFile; fileRef = E6C487911EDE6F5B00D127FF /* SQMazeFunction.c */; };
 		E6C487961EDFB2B700D127FF /* SQMazeStack.c in Sources */ = {isa = PBXBuildFile; fileRef = E6C487941EDFB2B700D127FF /* SQMazeStack.c */; };
 		E6C487991EE0F8DE00D127FF /* SQHanoiFunction.c in Sources */ = {isa = PBXBuildFile; fileRef = E6C487971EE0F8DE00D127FF /* SQHanoiFunction.c */; };
+		E6C4879C1EE12D4500D127FF /* NormalQueue.c in Sources */ = {isa = PBXBuildFile; fileRef = E6C4879A1EE12D4500D127FF /* NormalQueue.c */; };
 		E6D25FB91ED096FA00766F1A /* SignalList.c in Sources */ = {isa = PBXBuildFile; fileRef = E64730011ECD9E9A00C5D073 /* SignalList.c */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,8 @@
 		E6C487951EDFB2B700D127FF /* SQMazeStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQMazeStack.h; sourceTree = "<group>"; };
 		E6C487971EE0F8DE00D127FF /* SQHanoiFunction.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SQHanoiFunction.c; sourceTree = "<group>"; };
 		E6C487981EE0F8DE00D127FF /* SQHanoiFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQHanoiFunction.h; sourceTree = "<group>"; };
+		E6C4879A1EE12D4500D127FF /* NormalQueue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = NormalQueue.c; sourceTree = "<group>"; };
+		E6C4879B1EE12D4500D127FF /* NormalQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalQueue.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,8 @@
 				E6C487911EDE6F5B00D127FF /* SQMazeFunction.c */,
 				E6C487981EE0F8DE00D127FF /* SQHanoiFunction.h */,
 				E6C487971EE0F8DE00D127FF /* SQHanoiFunction.c */,
+				E6C4879B1EE12D4500D127FF /* NormalQueue.h */,
+				E6C4879A1EE12D4500D127FF /* NormalQueue.c */,
 			);
 			path = Clist;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 				E6C487961EDFB2B700D127FF /* SQMazeStack.c in Sources */,
 				E6A7467B1ED90D4B00420AD9 /* SQStack.c in Sources */,
 				E6C487991EE0F8DE00D127FF /* SQHanoiFunction.c in Sources */,
+				E6C4879C1EE12D4500D127FF /* NormalQueue.c in Sources */,
 				E6D25FB91ED096FA00766F1A /* SignalList.c in Sources */,
 				E6A746481ED3C31800420AD9 /* DoubleList.c in Sources */,
 				E6A7467E1ED9273000420AD9 /* SQStackFunction.c in Sources */,

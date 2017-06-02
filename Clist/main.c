@@ -12,9 +12,10 @@
 #include "SQStack.h"
 #include "SQStackFunction.h"
 #include "SQMazeFunction.h"
+#include "SQHanoiFunction.h"
 int main(int argc, const char * argv[]) {
     // insert code here...
-    maze_initMap();
-    maze_getRoad();
+    hanoi_main();
+    
     return 0;
 }

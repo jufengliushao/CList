@@ -13,7 +13,7 @@
 #include "SQStack.h"
 
 /**
- <#Description#>
+ hanoi 主函数
  */
 void hanoi_main();
 
