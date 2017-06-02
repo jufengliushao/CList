@@ -10,5 +10,11 @@
 #define SQHanoiFunction_h
 
 #include <stdio.h>
+#include "SQStack.h"
+
+/**
+ <#Description#>
+ */
+void hanoi_main();
 
 #endif /* SQHanoiFunction_h */
