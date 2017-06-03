@@ -7,3 +7,10 @@
 //
 
 #include "NormalQueue.h"
+#include <malloc/malloc.h>
+
+
+NormalQueue* nq_initQueue(){
+    NormalQueue *queue = (normalQueue)malloc(sizeof(NormalQueue));
+    return queue;
+}
