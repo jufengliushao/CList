@@ -15,7 +15,7 @@
 #include "SQHanoiFunction.h"
 int main(int argc, const char * argv[]) {
     // insert code here...
-    hanoi_main();
+//    hanoi_main();
     
     return 0;
 }
