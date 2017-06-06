@@ -13,9 +13,12 @@
 #include "SQStackFunction.h"
 #include "SQMazeFunction.h"
 #include "SQHanoiFunction.h"
+#include "SQBiTree.h"
 int main(int argc, const char * argv[]) {
     // insert code here...
-//    hanoi_main();
+    sq_bitree_init();
+    printf("%d\n", sq_bitree_returnLeftChild(0));
+    printf("%d\n", sq_bitree_returnRightChild(2));
     
     return 0;
 }

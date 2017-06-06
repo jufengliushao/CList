@@ -23,6 +23,22 @@ typedef int SQBiTree;
  */
 void sq_bitree_init();
 
+/**
+ 返回左孩子
+
+ @param index int 从0开始
+ @return int
+ */
+int sq_bitree_returnLeftChild(int index);
+
+/**
+ 返回右孩子
+ 
+ @param index int 从0开始
+ @return int
+ */
+int sq_bitree_returnRightChild(int index);
+
 
 
 
