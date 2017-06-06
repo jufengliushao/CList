@@ -14,11 +14,15 @@
 #include "SQMazeFunction.h"
 #include "SQHanoiFunction.h"
 #include "SQBiTree.h"
+#include "LinkBiTree-parent.h"
 int main(int argc, const char * argv[]) {
     // insert code here...
-    sq_bitree_init();
-    printf("%d\n", sq_bitree_returnLeftChild(0));
-    printf("%d\n", sq_bitree_returnRightChild(2));
-    
+    Bitree root = bt_link_init(1);
+    bt_link_setLeftChild(root, 2);
+    bt_link_setRightChild(root, 3);
+    bt_link_setLeftChild(root->lchild, 4);
+    bt_link_setRightChild(root->lchild, 5);
+    bt_link_setRightChild(root->rchild, 6);
+    bt_link_formerSort(root);
     return 0;
 }
