@@ -24,6 +24,8 @@ int main(int argc, const char * argv[]) {
     bt_link_setRightChild(root->lchild, 'E');
     bt_link_setLeftChild(root->lchild->rchild, 'G');
     bt_link_setRightChild(root->rchild, 'F');
-    bt_link_countLeafs(root);
+//    bt_link_countLeafs(root);
+    
+    bt_link_lineSort(root);
     return 0;
 }

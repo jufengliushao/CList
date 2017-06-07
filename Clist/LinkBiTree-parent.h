@@ -81,4 +81,6 @@ void bt_link_backSort(Bitree node);
  @param node Bitree
  */
 int bt_link_countLeafs(Bitree node);
+
+void bt_link_lineSort(Bitree root);
 #endif /* LinkBiTree_parent_h */
