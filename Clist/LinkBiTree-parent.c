@@ -92,3 +92,19 @@ Bitree bt_link_private_initNode(TElemType data){
     node->lchild = node->parent = node->rchild = NULL;
     return node;
 }
+
+/* ------------------------------------------------------------------ */
+
+/**
+ 创建队列
+
+ @param q linkQueue
+ */
+void bt_link_queue_private_initQueue(linkQueue *q);
+/* ------------------------------------------------------------------ */
+
+void bt_link_queue_private_initQueue(linkQueue *q){
+    if(!q) exit(0);
+    q->front = q->rear = (QNode *)malloc(sizeof(QNode));
+    q->front = q->rear = NULL;
+}

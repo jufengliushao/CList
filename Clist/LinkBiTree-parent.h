@@ -20,6 +20,16 @@ typedef struct LINKBT{
     struct LINKBT *lchild, *rchild, *parent;
 }BiNode, *Bitree;
 
+typedef struct LINK_NODE{
+    Bitree element;
+    struct LINK_NODE *next;
+}QNode;
+
+typedef struct LINK_QUEUE{
+    QNode *front;
+    QNode *rear;
+}linkQueue;
+
 /**
  创建根节点
 
