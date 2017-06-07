@@ -17,12 +17,13 @@
 #include "LinkBiTree-parent.h"
 int main(int argc, const char * argv[]) {
     // insert code here...
-    Bitree root = bt_link_init(1);
-    bt_link_setLeftChild(root, 2);
-    bt_link_setRightChild(root, 3);
-    bt_link_setLeftChild(root->lchild, 4);
-    bt_link_setRightChild(root->lchild, 5);
-    bt_link_setRightChild(root->rchild, 6);
-    bt_link_formerSort(root);
+    Bitree root = bt_link_init('A');
+    bt_link_setLeftChild(root, 'B');
+    bt_link_setRightChild(root, 'C');
+    bt_link_setLeftChild(root->lchild, 'D');
+    bt_link_setRightChild(root->lchild, 'E');
+    bt_link_setLeftChild(root->lchild->rchild, 'G');
+    bt_link_setRightChild(root->rchild, 'F');
+    bt_link_countLeafs(root);
     return 0;
 }

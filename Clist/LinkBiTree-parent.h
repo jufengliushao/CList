@@ -47,7 +47,28 @@ void bt_link_setRightChild(Bitree parent, TElemType data);
 /**
  先序遍历
 
- @param parent root 
+ @param node node
  */
-void bt_link_formerSort(Bitree parent);
+void bt_link_formerSort(Bitree node);
+
+/**
+ 中序遍历
+
+ @param node node
+ */
+void bt_link_middleSort(Bitree node);
+
+/**
+ 后序遍历
+
+ @param node node
+ */
+void bt_link_backSort(Bitree node);
+
+/**
+ 统计叶子节点数目
+
+ @param node Bitree
+ */
+int bt_link_countLeafs(Bitree node);
 #endif /* LinkBiTree_parent_h */

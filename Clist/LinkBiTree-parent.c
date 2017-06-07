@@ -36,7 +36,7 @@ void bt_link_setRightChild(Bitree parent, TElemType data){
 }
 
 void bt_link_formerSort(Bitree node){
-    printf("%d\t", node->data);
+    printf("%c\t", node->data);
     if (node->lchild) {
         bt_link_formerSort(node->lchild);
     }
@@ -44,6 +44,42 @@ void bt_link_formerSort(Bitree node){
         bt_link_formerSort(node->rchild);
     }
     return;
+}
+
+void bt_link_middleSort(Bitree node){
+    if (node->lchild) {
+        bt_link_middleSort(node->lchild);
+    }
+    printf("%c\t", node->data);
+    if (node->rchild) {
+        bt_link_middleSort(node->rchild);
+    }
+}
+
+void bt_link_backSort(Bitree node){
+    if (node->lchild) {
+        bt_link_backSort(node->lchild);
+    }
+    
+    if (node->rchild) {
+        bt_link_backSort(node->rchild);
+    }
+    printf("%c\t", node->data);
+}
+
+int bt_link_countLeafs(Bitree node){
+    static int count = 0;
+    if (node->lchild) {
+        bt_link_countLeafs(node->lchild);
+    }
+    if (node->rchild){
+        bt_link_countLeafs(node->rchild);
+    }
+    if (!node->lchild && !node->rchild) {
+        count ++;
+        printf("%d\n", count);
+    }
+    return count;
 }
 
 Bitree bt_link_private_initNode(TElemType data){
