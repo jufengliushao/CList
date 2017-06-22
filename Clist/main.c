@@ -15,17 +15,21 @@
 #include "SQHanoiFunction.h"
 #include "SQBiTree.h"
 #include "LinkBiTree-parent.h"
+#include "Sort.h"
 int main(int argc, const char * argv[]) {
     // insert code here...
-    Bitree root = bt_link_init('A');
-    bt_link_setLeftChild(root, 'B');
-    bt_link_setRightChild(root, 'C');
-    bt_link_setLeftChild(root->lchild, 'D');
-    bt_link_setRightChild(root->lchild, 'E');
-    bt_link_setLeftChild(root->lchild->rchild, 'G');
-    bt_link_setRightChild(root->rchild, 'F');
+//    Bitree root = bt_link_init('A');
+//    bt_link_setLeftChild(root, 'B');
+//    bt_link_setRightChild(root, 'C');
+//    bt_link_setLeftChild(root->lchild, 'D');
+//    bt_link_setRightChild(root->lchild, 'E');
+//    bt_link_setLeftChild(root->lchild->rchild, 'G');
+//    bt_link_setRightChild(root->rchild, 'F');
 //    bt_link_countLeafs(root);
     
-    bt_link_lineSort(root);
+//    bt_link_lineSort(root);
+    
+    int a[] = {0, 5, 3, 1, 6, 4};
+    sortTheArray(a, 6);
     return 0;
 }
