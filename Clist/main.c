@@ -30,6 +30,6 @@ int main(int argc, const char * argv[]) {
 //    bt_link_lineSort(root);
     
     int a[] = {0, 5, 3, 1, 6, 4};
-    sortTheArray(a, 6);
+    bubbleSort(a, 6);
     return 0;
 }

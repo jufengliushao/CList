@@ -12,4 +12,5 @@
 #include <stdio.h>
 
 void sortTheArray(int a[], int lenght);
+void bubbleSort(int a[], int length);
 #endif /* Sort_h */

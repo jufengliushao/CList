@@ -26,3 +26,25 @@ void sortTheArray(int a[], int lenght){
         printf("%d-", a[i]);
     }
 }
+
+
+void bubbleSort(int a[], int length){
+    int flag = 0; // 是否 交换的标志
+    for (int i = 0; i < length - 1; i ++) {
+        flag = 0;
+        for (int j = i + 1; j < length; j ++) {
+            if(a[i] > a[j]){
+                int tmp = a[i];
+                a[i] = a[j];
+                a[j] = tmp;
+                flag = 1;
+            }
+        }
+//        if (flag == 0) {
+//            break;
+//        }
+    }
+    for (int i = 0; i < length; i ++) {
+        printf("%d-", a[i]);
+    }
+}
