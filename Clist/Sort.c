@@ -40,9 +40,6 @@ void bubbleSort(int a[], int length){
                 flag = 1;
             }
         }
-//        if (flag == 0) {
-//            break;
-//        }
     }
     for (int i = 0; i < length; i ++) {
         printf("%d-", a[i]);
