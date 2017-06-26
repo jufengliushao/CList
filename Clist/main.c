@@ -33,6 +33,6 @@ int main(int argc, const char * argv[]) {
 //    bubbleRearSort(a, 3);
 
     int a[] = {46, 55, 13, 42, 94, 05, 17, 70};
-    quickSort(a, 0, 7);
+    selectSort(a, 0, 8);
     return 0;
 }

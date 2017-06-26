@@ -97,3 +97,28 @@ void quickSort(int a[], int start, int end){
     quickSort(a, start, i - 1);
     quickSort(a, i + 1, end);
 }
+
+void selectSort(int a[], int start, int length){
+    if(start == length - 1) return;
+    int i = start + 1, index = start;
+    int min = a[start];
+    while (i < length) {
+        if (min > a[i]) {
+            min = a[i];
+            index = i;
+        }
+        i ++;
+    }
+    if (index != start) {
+        int tmp = a[start];
+        a[start] = min;
+        a[index] = tmp;
+    }
+    
+    for (int i = 0; i < length; i ++) {
+        printf("%d-", a[i]);
+    }
+    printf("\n");
+    
+    selectSort(a, start + 1, length);
+}

@@ -15,4 +15,5 @@ void sortTheArray(int a[], int lenght);
 void bubbleSort(int a[], int length);
 void bubbleRearSort(int a[], int length);
 void quickSort(int a[], int start, int end);
+void selectSort(int a[], int start, int length);
 #endif /* Sort_h */
