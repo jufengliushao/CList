@@ -28,8 +28,11 @@ int main(int argc, const char * argv[]) {
 //    bt_link_countLeafs(root);
     
 //    bt_link_lineSort(root);
-    
-    int a[] = {0, 5, 3, 1, 6, 4};
-    bubbleSort(a, 6);
+//    
+//    int a[] = {0, 5, 3, 1, 6, 4};
+//    bubbleRearSort(a, 3);
+
+    int a[] = {46, 55, 13, 42, 94, 05, 17, 70};
+    quickSort(a, 0, 7);
     return 0;
 }

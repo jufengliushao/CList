@@ -45,3 +45,55 @@ void bubbleSort(int a[], int length){
         printf("%d-", a[i]);
     }
 }
+
+void bubbleRearSort(int a[], int length){
+    for (int i = length-1; i > 0; i --) {
+        for (int j = i - 1; j >= 0; j --) {
+            if (a[i] < a[j]) {
+                int tmp = a[i];
+                a[i] = a[j];
+                a[j] = tmp;
+            }
+        }
+    }
+    for (int i = 0; i < length; i ++) {
+        printf("%d-", a[i]);
+    }
+}
+
+void quickSort(int a[], int start, int end){
+    if (start >= end) {
+        return;
+    }
+    
+    int i = start, j = end, mid = a[i];
+    
+    while (i < j) {
+        while (i < j && mid < a[j]) {
+            j --;
+        }
+        //判断是否需要交换
+        if (i < j) {
+            a[i] = a[j];
+            a[j] = mid;
+            i ++;
+        }
+        while (i < j && mid > a[i]) {
+            i ++;
+        }
+        // 判断是否交换
+        if(i < j){
+            a[j] = a[i];
+            a[i] = mid;
+            j --;
+        }
+    }
+    
+    for (int i = 0; i < 8; i ++) {
+        printf("%d-", a[i]);
+    }
+    printf("\n");
+    
+    quickSort(a, start, i - 1);
+    quickSort(a, i + 1, end);
+}
